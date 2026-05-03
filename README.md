@@ -66,17 +66,16 @@ Browser (TikTok Web)
 ## 📁 Struktur File
 
 ```
-Scroll CV Project/
+gesture-tiktok-controller/
 │
 ├── gesture_recognition.py   # Program utama — jalankan ini
 ├── collect_data.py          # Script kumpul data training
 ├── train_model.py           # Script training KNN model
 │
-├── gesture_data.csv         # Dataset landmark tangan (1000 samples)
-├── gesture_model.pkl        # Model KNN terlatih (siap pakai)
-│
 └── README.md
 ```
+
+> `gesture_data.csv` dan `gesture_model.pkl` tidak disertakan di repo karena bersifat personal (data tangan spesifik pengguna). Generate sendiri menggunakan `collect_data.py` dan `train_model.py`.
 
 ---
 
@@ -84,8 +83,8 @@ Scroll CV Project/
 
 ### 1. Clone / download project
 
-```bash
-git clone https://github.com/username/gesture-tiktok-controller
+```
+git clone https://github.com/abeelodon/gesture-tiktok-controller
 cd gesture-tiktok-controller
 ```
 
@@ -139,11 +138,13 @@ python collect_data.py
 
 | Tombol | Gesture | Target |
 |---|---|---|
-| `1` | ☝️ SCROLL UP | 200 sample |
-| `2` | 👇 SCROLL DOWN | 200 sample |
-| `3` | 👍 LIKE | 200 sample |
-| `4` | ✋ STOP | 200 sample |
-| `5` | 🤚 UNKNOWN (random) | 200 sample |
+| `1` | ☝️ SCROLL UP | 1000 sample |
+| `2` | 👇 SCROLL DOWN | 1000 sample |
+| `3` | 👍 LIKE | 1000 sample |
+| `4` | ✋ STOP | 1000 sample |
+| `5` | 🤚 UNKNOWN (random) | 1000 sample |
+
+Tips: variasikan posisi tangan — dekat/jauh kamera, sedikit miring, berbagai sudut — agar model lebih robust.
 
 ### 2. Train model
 
@@ -159,13 +160,12 @@ Output: `gesture_model.pkl` siap dipakai.
 
 | Metric | Nilai |
 |---|---|
-| Total training data | 1.000 samples |
+| Total training data | 5.000 samples (1.000 per gesture) |
 | Algoritma | K-Nearest Neighbors (K=3) |
 | Test accuracy | 98.5% |
 | Normalisasi | StandardScaler |
 | Metrik jarak | Euclidean |
-
-Model divalidasi dengan train/test split 80:20 dan 5-fold cross validation.
+| Validasi | Train/test split 80:20 + 5-fold cross validation |
 
 ---
 
@@ -191,6 +191,5 @@ Model divalidasi dengan train/test split 80:20 dan 5-fold cross validation.
 
 ## 👤 Author
 
-**[Nama Kamu]**
-- GitHub: [@username](https://github.com/username)
-- LinkedIn: [linkedin.com/in/username](https://linkedin.com/in/username)
+**Fathan Nabil Rahman**
+- GitHub: [@abeelodon](https://github.com/abeelodon)
